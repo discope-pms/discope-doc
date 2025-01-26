@@ -53,12 +53,13 @@ markdown_extensions:
 nav:
   - 'Home': 'index.md'
   - 'Configuration de base':
+      - 'Organisation': 'settings/organisation.md'
       - 'Sécurité': 'settings/security.md'
       - 'Paramètres globaux': 'settings/parameters.md'
       - 'Communication': 'settings/comunication.md'
   - 'Concept':
-      - 'Identity': 'concept/identity.md'
-      - 'Finances': 'concept/finance.md'
-      - 'Ventes': 'concept/sale.md'
+      - 'Identité': 'concept/identity.md'
+      - 'Financement': 'concept/finance.md'
+      - 'Ventes':
+        - 'Ventes': 'concept/sale.md'
       - 'Points de vente': 'concept/cashdesk.md'
-      - 'Documents': 'concept/documents.md'

@@ -17,47 +17,6 @@ Cette configuration permet de définir différents types de réservations en fon
 | 14  | Online Travel Agencies      | OTA   | 1                          |
 | 15  | Autre                       |       |                            |
 
-## Clients 
-Cette configuration gère les informations des clients, les catégories tarifaires et les tranches d’âge. En général, elle est établie par l’application Discope lors de l’initialisation, bien que des adaptations puissent être effectuées par la suite.
-
-### Types de clients 
-Cette classification permet de regrouper les clients selon leur statut juridique ou organisationnel, facilitant ainsi la gestion des relations commerciales et l’adaptation des services.
-
-| ID  | Code | Description                                                |
-|-----|------|------------------------------------------------------------|
-| 1   | I    | Particulier (personne physique)                           |
-| 2   | SE   | Indépendant                                                |
-| 3   | C    | Société                                                    |
-| 4   | NP   | Association ou École (asbl, association de fait ou autre)  |
-| 5   | PA   | Administration publique                                    |
-
-
-### Nature du client 
-Elle permet de classer les clients en fonction de leur catégorie tarifaire et de leur type d’entité. Chaque type est identifié par un code et se voit attribuer une catégorie tarifaire spécifique, déterminant ainsi les tarifs applicables et les conditions de service.
-
-| ID  | Code | Description               |
-|-----|------|---------------------------|
-| 1   | IN   | Individuels (particuliers) |
-| 2   | AC   | Administration publique    |
-| 3   | AD   | Administrateur             |
-| 4   | AM   | Groupe d'amis              |
-
-### Catégories tarifaires
-Cette configuration définit des groupes distincts pour faciliter la gestion des tarifs et l’adaptation des services offerts, en fonction des réservations de chaque client ou groupe.
-
-| ID  | Name | Description                            |
-|-----|------|----------------------------------------|
-| 1   | T1   | Institutions privilégiées (reconnues CWB) |
-| 2   | T2   | Groupements                            |
-| 3   | T3   | Réseau Organisation                    |
-| 4   | T4   | Grand public                           |
-| 5   | T5   | Ecoles primaires et secondaires        |
-| 6   | T6   | TO partenaires                         |
-| 7   | T7   | Ecoles maternelles                     |
-
-### Tranches d’âge 
-Cette fonctionnalité permet de classer les participants d’une réservation selon leur tranche d’âge (Bébé 0-3, Maternelle 3-6, Primaire 6-12, Secondaire 12-26, Adulte 26-99) afin d’adapter les services et les tarifs proposés.
-
 
 ## Catalogue 
 
