@@ -466,7 +466,7 @@ Il y a plusieurs limitations :
 
 ## Récapitulatif de la résolution des paiements
 
-<center><img src="/_assets/img/image4.png" /></center>
+<center><img src="/_assets/img/payments-resolution.png" /></center>
 
 Si la ligne d'extrait contient une communication (c'est-à-dire que le
 numéro de communication se retrouve dans la ligne d'extrait, que ce
@@ -508,7 +508,7 @@ Au moment de la facturation de solde, si un financement présent un
 montant payé est supérieur au montant dû, la différence est marquée à
 rembourser.
 
-Récapitulatif de l'utilisation de de l'interface utilisateur :
+Récapitulatif de l'utilisation de l'interface utilisateur :
 
 -   On peut cliquer autant de fois que souhaité sur le bouton
     "Réconcilier" : si une réconciliation peut être faite par le

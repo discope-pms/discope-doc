@@ -31,7 +31,7 @@ Un historique des sessions et des commandes est disponible via `[App
 La session de caisse est établie par l'utilisateur et par centre. Elle
 comporte deux états : « pending » et « closed ».
 
-<center><img src="/_assets/img/image1.png" /></center>
+<center><img src="/_assets/img/cashdesk-session-workflow.png" /></center>
 
 ## Fermeture de la caisse
 
@@ -46,7 +46,7 @@ ajuster la différence entre le montant de clôture attendu et celui
 effectivement enregistré, afin de maintenir la caisse dans un état
 cohérent.
 
-<center><img src="/_assets/img/image2.png" /></center>
+<center><img src="/_assets/img/cashdesk-closing.png" /></center>
 
 ## Affichage des prix TVAC
 
@@ -98,7 +98,7 @@ passage du centre. Les produits associés au client de passage ne seront
 pas liés à une réservation, mais seront traités via la facture de vente
 au comptoir.
 
-<center><img src="/_assets/img/image3.png" /></center>
+<center><img src="/_assets/img/cashdesk-products-payments.png" /></center>
 
 ## Découpe en paiements et encaissements
 
