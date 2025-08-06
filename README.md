@@ -26,7 +26,7 @@ Ce dépôt contient la documentation officielle de l'application Discope. Elle e
 
 ## Sections principales
 
-- `docs/setup.md` : procédure d'installation et de configuration.
+- `docs/setup/index.md` : procédure d'installation et de configuration.
 - `docs/concepts.md` : notions et terminologie essentielles.
 - `docs/application-description/index.md` : vue d'ensemble des modules de l'application.
 

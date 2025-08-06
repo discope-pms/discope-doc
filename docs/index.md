@@ -5,6 +5,6 @@ Discope est une plateforme qui gère les réservations, les ressources et la com
 ## Structure de la documentation
 
 - [Concepts](concepts.md) : vue d'ensemble des notions et de la terminologie.
-- [Installation et configuration](setup.md) : guide pour mettre en place une nouvelle instance de Discope.
+- [Installation et configuration](setup/index.md) : guide pour mettre en place une nouvelle instance de Discope.
 - [Description des applications](application-description/index.md) : guides détaillés des applications et modules.
 

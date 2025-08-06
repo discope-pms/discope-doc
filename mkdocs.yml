@@ -53,7 +53,17 @@ markdown_extensions:
 nav:
   - 'Home': 'index.md'
   - 'Concepts': 'concepts.md'
-  - 'Installation': 'setup.md'
+  - 'Installation':
+      - 'Vue d’ensemble': 'setup/index.md'
+      - 'Sécurité': 'setup/securite.md'
+      - 'Organisation': 'setup/organisation.md'
+      - 'Compta': 'setup/compta.md'
+      - 'Communication': 'setup/communication.md'
+      - 'Paramètres': 'setup/parametres.md'
+      - 'Ventes': 'setup/ventes.md'
+      - 'Catalogue des produits': 'setup/catalogue_produits.md'
+      - 'Prix': 'setup/prix.md'
+      - 'Emails': 'setup/emails.md'
   - 'Descriptif applicatif':
       - 'Introduction': 'application-description/index.md'
       - 'Catalogue':
