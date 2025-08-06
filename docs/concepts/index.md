@@ -1,4 +1,4 @@
-# Concepts
+## Concepts
 
 Aperçu des notions principales utilisées dans Discope.
 

@@ -1,4 +1,4 @@
-# Configuration « Compta »
+## Configuration « Compta »
 
 Cela permet de définir le plan et les règles comptables. Cette section se trouve dans Finances/Compta.
 

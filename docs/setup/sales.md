@@ -1,4 +1,4 @@
-# Configuration de Ventes
+## Configuration de Ventes
 
 Cette option permet de définir les paramètres pour les réservations, les réductions et les produits automatiques.
 

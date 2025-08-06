@@ -1,4 +1,4 @@
-# Configuration des emails
+## Configuration des emails
 
 **1. Compte email principal pour l'envoi**
 
