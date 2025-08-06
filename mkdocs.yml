@@ -52,7 +52,11 @@ markdown_extensions:
   - pymdownx.tilde
 nav:
   - 'Home': 'index.md'
-  - 'Concepts': 'concepts.md'
+  - 'Concepts':
+      - 'Vue d’ensemble': 'concepts/index.md'
+      - 'Organisation': 'concepts/organisation.md'
+      - 'Centres': 'concepts/centres.md'
+      - 'Unités locatives': 'concepts/unites_locatives.md'
   - 'Installation':
       - 'Vue d’ensemble': 'setup/index.md'
       - 'Sécurité': 'setup/securite.md'
