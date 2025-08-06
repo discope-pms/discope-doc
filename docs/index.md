@@ -6,5 +6,5 @@ Discope est une plateforme qui gère les réservations, les ressources et la com
 
 - [Concepts](concepts/index.md) : vue d'ensemble des notions et de la terminologie.
 - [Installation et configuration](setup/index.md) : guide pour mettre en place une nouvelle instance de Discope.
-- [Description des applications](fonctionnement/index.md) : guides détaillés des applications et modules.
+- [Description des applications](logic/index.md) : guides détaillés des applications et modules.
 
