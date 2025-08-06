@@ -1,8 +1,8 @@
-# Installation et configuration
+## Installation et configuration
 
 Cette section reprend les différentes étapes pour la configuration initiale d'une nouvelle instance de Discope pour laquelle seules les données obligatoires d'initialisation ont été intégrées.
 
-## Sections
+### Sections
 
 - [Configuration de Sécurité](security.md)
 - [Configuration de l'organisation](organization.md)

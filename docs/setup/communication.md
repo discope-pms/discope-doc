@@ -1,4 +1,4 @@
-# Configuration « Communication »
+## Configuration « Communication »
 
 - **Templates** : La configuration de template permet de créer des modèles d'emails à envoyer aux clients, comprenant une section pour l'objet et une pour le corps du message. Ces modèles sont associés à une catégorie spécifique et à un type, tel que devis, contrat ou facture. Par défaut, une catégorie de modèle est définie et les modèles peuvent inclure des fichiers joints spécifiés.
 

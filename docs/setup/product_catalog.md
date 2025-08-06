@@ -1,4 +1,4 @@
-# Configuration du catalogue des produits
+## Configuration du catalogue des produits
 
 - **Produits** : La configuration des produits permet d'associer chaque produit à un modèle spécifique, garantissant ainsi un SKU unique pour une identification précise. Chaque produit doit comporter un libellé descriptif, un SKU, un modèle de produit correspondant, ainsi que des informations clés telles que son statut de vente, sa possibilité d'être inclus dans un pack et la famille à laquelle il appartient. De plus, un produit peut regrouper plusieurs autres produits, formant ainsi un pack. Enfin, il peut avoir plusieurs prix selon différentes listes de prix.
 
