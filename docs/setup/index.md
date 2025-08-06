@@ -4,12 +4,12 @@ Cette section reprend les différentes étapes pour la configuration initiale d'
 
 ## Sections
 
-- [Configuration de Sécurité](securite.md)
-- [Configuration de l'organisation](organisation.md)
-- [Configuration « Compta »](compta.md)
+- [Configuration de Sécurité](security.md)
+- [Configuration de l'organisation](organization.md)
+- [Configuration « Compta »](accounting.md)
 - [Configuration « Communication »](communication.md)
-- [Configuration des paramètres](parametres.md)
-- [Configuration de Ventes](ventes.md)
-- [Configuration du catalogue des produits](catalogue_produits.md)
-- [Configuration des prix](prix.md)
+- [Configuration des paramètres](settings.md)
+- [Configuration de Ventes](sales.md)
+- [Configuration du catalogue des produits](product_catalog.md)
+- [Configuration des prix](prices.md)
 - [Configuration des emails](emails.md)
