@@ -1,4 +1,4 @@
-# Configuration de l'organisation
+## Configuration de l'organisation
 
 - **Organisation :** Par défaut, l'organisation est déjà créée avec l'identificateur 1. Il est nécessaire d'ajouter le nom, le type, l'email, le numéro de téléphone, le numéro d'entreprise, ainsi que l'adresse complète (pays, ville, rue, numéro et code postal).
 

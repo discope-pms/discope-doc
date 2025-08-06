@@ -1,4 +1,4 @@
-# Configuration de Sécurité
+## Configuration de Sécurité
 
 Cet aspect permet d'établir les permissions et restrictions pour les utilisateurs assignés à un groupe. Elle se trouve dans l'option Base, puis dans Sécurité.
 
