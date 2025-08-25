@@ -18,8 +18,9 @@ Ton rôle est de créer, modifier et organiser les fichiers de documentation con
 
 1. **Langue** : Toujours écrire en **français clair** et précis.
 2. **Titres** :
-   - Un fichier Markdown commence par un titre de niveau 1 (`# Titre`).
-   - Les sous-sections utilisent des niveaux hiérarchiques (`##`, `###`).
+   - Mkdocs ajoute toujours automatiquement un titre de niveau 1 (`<h1>`) correspondant à `# Nom de la page`, sur base du nom de la page en cours, le premier niveau à utiliser est donc toujours le niveau 2 (`## Titre`);
+   - Il peut y avoir plusieurs titres de niveau 2 sur une même page, puisqu'ils se rapportent toujours à la page en cours, qui est considérée comme niveau 1;
+   - Les sous-sections de niveau 3 et suivants, utilisent les niveaux hiérarchiques suivants (`###`, `####`).
 3. **Style** :
    - Phrases courtes et lisibles.
    - Vocabulaire cohérent avec le reste de la documentation.
