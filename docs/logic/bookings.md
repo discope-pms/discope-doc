@@ -1040,6 +1040,14 @@ annexe :
 Les différents états par lesquels passe une réservation sont décrit dans
 le chapitre « Etats d'une réservation ».
 
+### Schéma
+
+<center><img src="/_assets/img/booking-workflow.png" /></center>
+
+### Schéma détaillé
+
+<center><img src="/_assets/img/booking-workflow-detailed.png" /></center>
+
 ### Etats d'une réservation
 
 Les réservations doivent nécessairement passer par chacun de ces états
@@ -1051,9 +1059,11 @@ selon les transitions présentées dans le diagramme ci-dessus :
 -   Validée
 -   Checked-in
 -   Checked-out
+-   Pro forma
 -   Solde débiteur
 -   Solde créditeur
 -   Clôture
+-   Annulée
 
 Lorsqu'une réservation passe en 'option', les consommations sont créées
 et il n'est plus possible de modifier le détail des services.
