@@ -1184,6 +1184,72 @@ Important : La vue `[Planning > Arrivées > Prévues]` est également
 consacrée à l'export du listing des arrivées (précédemment
 `[Réservations > Planning > Arrivées]`).
 
+### Annulation
+
+#### Annulation sans frais
+
+Annulation d'une réservation sans facturation.
+
+Conséquences :
+
+  - La réservation est marquée comme annulée et son status passe à "Annulée".
+  - Les financements non payés sont supprimés.
+  - Les montants des financements restants sont ajustés au montant déjà payé.
+  - Un financement négatif est créé pour le remboursement du client.
+
+#### Annulation avec frais
+
+Annulation d'une réservation avec facturation de frais d'annulation.
+
+Conséquences :
+
+  - La réservation est marquée comme annulée.
+  - Si la réservation est encore au stade Devis, elle le reste. Si elle a déjà dépassé le stade Devis, son statut passe à "Terminée".
+  - Les financements non payés sont supprimés.
+  - Les groupes sont requalifiés en "Extra" afin de pouvoir être modifiés.
+  - Un groupe supplémentaire est ajouté, contenant le produit d’annulation au tarif saisi dans les "Frais d’annulation".
+
+Ensuite :
+
+  - Les groupes "Extra" devenus inutiles peuvent être supprimés.
+  - Les frais d’annulation sont facturés.
+  - La réservation suit ensuite le processus habituel jusqu’au statut "Clôturée".
+
+#### Annulation avec frais OTA
+
+Annulation d'une réservation avec frais depuis une plateforme externe à Discope.
+
+Conséquences :
+
+  - Le statut de la réservation passe à "Terminée".
+  - Les financements non payés sont supprimés.
+  - Les groupes sont requalifiés en "Extra" afin de pouvoir être modifiés.
+  - Un groupe supplémentaire est ajouté, contenant le produit d’annulation au tarif de 0 €.
+
+Ensuite :
+
+  - Les groupes "Extra" devenus inutiles peuvent être supprimés.
+  - Le montant des frais d’annulation doit être modifié de 0 € vers la somme demandée.
+  - Les frais d’annulation sont facturés.
+  - La réservation suit ensuite le processus habituel jusqu’au statut "Clôturée".
+
+#### Annulation sans frais OTA
+
+Annulation d'une réservation sans frais depuis une plateforme externe à Discope.
+
+Conséquences :
+
+  - La réservation est marquée comme annulée et son status passe à "Annulée".
+  - Les financements non payés sont supprimés.
+  - Les groupes sont requalifiés en "Extra" afin de pouvoir être modifiés.
+  - Un groupe supplémentaire est ajouté, contenant le produit d’annulation au tarif de 0 €.
+
+Ensuite :
+
+  - Utiliser l'action "Annuler sans frais" dans la fiche de réservation :
+    - Le statut de la réservation passe à "Annulée".
+    - Les montants des financements restants sont ajustés au montant déjà payé.
+    - Un financement négatif est créé pour le remboursement du client.
 
 ## Système d'alertes
 
