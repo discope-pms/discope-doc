@@ -101,6 +101,10 @@ En cas d'aller-retour entre les états "terminée" et "facturée", la
 proforma de solde, si elle existe déjà, est toujours remplacée par la
 nouvelle.
 
+Une note de crédit proforma ne peut pas être supprimée, cela causerait
+une incohérence dans la suite des factures. Une facture annulée se
+retrouverait sans ça note de crédit indispensable.
+
 Important :
 
 -   Une proforma n'est pas une facture mais un brouillon de facture, et
