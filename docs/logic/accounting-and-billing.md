@@ -155,6 +155,9 @@ La création de facture se fait donc en deux étapes :
     attribué. Si un solde reste dû, un financement est également créé et
     rattaché à la facture de solde.
 
+Si une TVA s'applique, alors le client de la facture de solde ne peut pas être
+différent de celui utilisé pour les autres factures intermédiaires de la réservation.
+
 ## Logique de facturation
 
 Par convention, les factures sont sauf exception), émises au cours du
