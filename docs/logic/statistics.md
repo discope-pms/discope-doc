@@ -282,3 +282,10 @@ les colonnes suivantes :
 -   Index final
 -   Index initial
 -   Consommation (delta)
+
+Pour les gîtes de groupes, l'onglet de relevé de compteur est affiché lorsqu'une
+réservation a le statut "terminé" (et qu'elle n'est pas annulée).
+
+La liste est groupée par type de compteur et triée par date de création.
+La différence entre l'index du check-in et celui du check-out est calculée et affichée pour chaque compteur.
+La colonne "Valeur" présente la valeur d’affichage de l'index (avec une virgule séparant les décimales).
