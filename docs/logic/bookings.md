@@ -1184,6 +1184,72 @@ Important : La vue `[Planning > Arrivées > Prévues]` est également
 consacrée à l'export du listing des arrivées (précédemment
 `[Réservations > Planning > Arrivées]`).
 
+### Annulation
+
+#### Annulation sans frais
+
+Annulation d'une réservation sans facturation.
+
+Conséquences :
+
+  - La réservation est marquée comme annulée et son status passe à "Annulée".
+  - Les financements non payés sont supprimés.
+  - Les montants des financements restants sont ajustés au montant déjà payé.
+  - Un financement négatif est créé pour le remboursement du client.
+
+#### Annulation avec frais
+
+Annulation d'une réservation avec facturation de frais d'annulation.
+
+Conséquences :
+
+  - La réservation est marquée comme annulée.
+  - Si la réservation est encore au stade Devis, elle le reste. Si elle a déjà dépassé le stade Devis, son statut passe à "Terminée".
+  - Les financements non payés sont supprimés.
+  - Les groupes sont requalifiés en "Extra" afin de pouvoir être modifiés.
+  - Un groupe supplémentaire est ajouté, contenant le produit d’annulation au tarif saisi dans les "Frais d’annulation".
+
+Ensuite :
+
+  - Les groupes "Extra" devenus inutiles peuvent être supprimés.
+  - Les frais d’annulation sont facturés.
+  - La réservation suit ensuite le processus habituel jusqu’au statut "Clôturée".
+
+#### Annulation avec frais OTA
+
+Annulation d'une réservation avec frais depuis une plateforme externe à Discope.
+
+Conséquences :
+
+  - Le statut de la réservation passe à "Terminée".
+  - Les financements non payés sont supprimés.
+  - Les groupes sont requalifiés en "Extra" afin de pouvoir être modifiés.
+  - Un groupe supplémentaire est ajouté, contenant le produit d’annulation au tarif de 0 €.
+
+Ensuite :
+
+  - Les groupes "Extra" devenus inutiles peuvent être supprimés.
+  - Le montant des frais d’annulation doit être modifié de 0 € vers la somme demandée.
+  - Les frais d’annulation sont facturés.
+  - La réservation suit ensuite le processus habituel jusqu’au statut "Clôturée".
+
+#### Annulation sans frais OTA
+
+Annulation d'une réservation sans frais depuis une plateforme externe à Discope.
+
+Conséquences :
+
+  - La réservation est marquée comme annulée et son status passe à "Annulée".
+  - Les financements non payés sont supprimés.
+  - Les groupes sont requalifiés en "Extra" afin de pouvoir être modifiés.
+  - Un groupe supplémentaire est ajouté, contenant le produit d’annulation au tarif de 0 €.
+
+Ensuite :
+
+  - Utiliser l'action "Annuler sans frais" dans la fiche de réservation :
+    - Le statut de la réservation passe à "Annulée".
+    - Les montants des financements restants sont ajustés au montant déjà payé.
+    - Un financement négatif est créé pour le remboursement du client.
 
 ## Système d'alertes
 
@@ -1242,3 +1308,30 @@ le centre de gestion.
 Lors des passages de statut ou lorsqu'une réservation est annulée ou
 clôturée, certaines alertes deviennent non pertinentes et sont
 automatiquement supprimées.
+
+
+
+## Type
+
+Il est possible de définir différents **types de réservation** afin d’améliorer l’analyse statistique des réservations effectuées.
+
+Une réservation peut se voir attribuer un type de plusieurs manières :
+
+- à partir du **type de réservation associé au modèle de produit** d’un pack vendu ;
+- via la **correspondance avec une règle d’assignation** de type de réservation.
+
+### 1) Type défini par le modèle de produit d’un pack
+
+Si le modèle de produit d’un pack vendu dans la réservation possède un type de réservation configuré, ce type sera automatiquement attribué à la réservation.
+
+### 2) Type défini par une règle d’assignation
+
+Des **règles d’assignation** peuvent être paramétrées pour déterminer le type de réservation en fonction de différents critères :
+
+- **Conditions** : nombre de personnes, nombre d’enfants, nombre d’adultes, channel manager, durée ou caractéristiques du séjour
+- **Type de séjour** : gîte auberge ou gîte groupe
+- **Catégories tarifaires** : T1, T2, T3, T4, etc.
+
+Il est également possible de créer une **règle d’assignation par défaut**, sans conditions, sans type de séjour et sans catégorie tarifaire, afin d’attribuer un type de réservation lorsque aucun autre critère ne s’applique.
+
+Ce mécanisme offre une grande **flexibilité** dans l’attribution automatique des types de réservation.

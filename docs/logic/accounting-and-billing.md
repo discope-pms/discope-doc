@@ -101,6 +101,10 @@ En cas d'aller-retour entre les états "terminée" et "facturée", la
 proforma de solde, si elle existe déjà, est toujours remplacée par la
 nouvelle.
 
+Une note de crédit proforma ne peut pas être supprimée, cela causerait
+une incohérence dans la suite des factures. Une facture annulée se
+retrouverait sans ça note de crédit indispensable.
+
 Important :
 
 -   Une proforma n'est pas une facture mais un brouillon de facture, et
@@ -137,7 +141,7 @@ La création de facture se fait donc en deux étapes :
 1.  Sur la fiche de réservation, utiliser le bouton d'action
     (« ACTIONS » à droite du statut de la facture) et sélectionner « FACTURER LE SOLDE ».
     Un brouillon de facture (proforma) est alors créé. En cas d'erreur, ce
-    bourillon peut être mis à jour en repassant la réservation à l'état
+    brouillon peut être mis à jour en repassant la réservation à l'état
     "terminée" (toujours via le bouton à droite du statut de la réservation).
     <br>
     Lorsque le brouillon proforma est correct (tous les services ont bien 
@@ -150,6 +154,9 @@ La création de facture se fait donc en deux étapes :
     Une facture de solde est alors émise et un numéro (définitif) lui est
     attribué. Si un solde reste dû, un financement est également créé et
     rattaché à la facture de solde.
+
+Si une TVA s'applique, alors le client de la facture de solde ne peut pas être
+différent de celui utilisé pour les autres factures intermédiaires de la réservation.
 
 ## Logique de facturation
 
