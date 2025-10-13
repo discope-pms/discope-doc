@@ -141,7 +141,7 @@ La création de facture se fait donc en deux étapes :
 1.  Sur la fiche de réservation, utiliser le bouton d'action
     (« ACTIONS » à droite du statut de la facture) et sélectionner « FACTURER LE SOLDE ».
     Un brouillon de facture (proforma) est alors créé. En cas d'erreur, ce
-    bourillon peut être mis à jour en repassant la réservation à l'état
+    brouillon peut être mis à jour en repassant la réservation à l'état
     "terminée" (toujours via le bouton à droite du statut de la réservation).
     <br>
     Lorsque le brouillon proforma est correct (tous les services ont bien 
