@@ -1415,6 +1415,8 @@ automatiquement supprimées.
 
 Il est possible de définir différents **types de réservation** afin d’améliorer l’analyse statistique des réservations effectuées.
 
+> 💡 **Astuce** : Le type de réservation peut également être utilisé pour appliquer un plan de paiement spécifique.
+
 Une réservation peut se voir attribuer un type de plusieurs manières :
 
 - à partir du **type de réservation associé au modèle de produit** d’un pack vendu ;
