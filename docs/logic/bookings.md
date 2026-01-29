@@ -500,6 +500,106 @@ le premier jour et 0 pour le second.
     désactivée (et passe nécessairement par la modification du nombre de
     personnes par tranche d'âge).
 
+## Calcul du prix
+
+Le calcul du prix d’une réservation ou d’une facture doit suivre des règles précises afin d’assurer l’exactitude des montants pour le client et la comptabilité.
+Chaque produit ou service est facturé selon son prix unitaire, sa quantité et le taux de TVA applicable.
+Les montants HTVA et TTC sont calculés avec des règles d’arrondi spécifiques pour éviter les écarts.
+Cette section décrit la structure des lignes de réservation/facture, le calcul des totaux, et la méthode pour appliquer correctement la TVA par taux.
+
+### Structure
+
+Une réservation ou facture est composée de plusieurs **lignes**, chaque ligne représentant un produit ou un service.  
+Chaque ligne contient les informations suivantes :
+
+- **Produit** : nom ou référence du produit/service.
+- **Prix unitaire** : prix HTVA d'une unité.
+- **Quantité** : nombre d’unités commandées.
+- **Taux de TVA** : pourcentage de TVA applicable à la ligne.
+- **Total HTVA** : prix total hors taxes pour la ligne.
+- **Total TTC** : prix total toutes taxes comprises (à titre indicatif).
+
+### Calculs
+
+#### Calcul du prix HTVA d’une ligne
+
+- Le **prix unitaire** d’un produit peut contenir jusqu’à **4 décimales**.
+- Le **total HTVA** d’une ligne est calculé ainsi :
+
+    `Total HTVA = Prix unitaire × Quantité`
+
+- Le total HTVA est ensuite **arrondi à 2 décimales**.
+- Le **total TTC** d’une ligne est calculé à partir du total HTVA et du taux de TVA, mais est fourni **uniquement à titre indicatif**.
+
+#### Calcul de la TVA
+
+- La TVA est calculée **par taux de TVA**, pour garantir une ventilation correcte des montants par taux.
+- Le total TVA d'un taux est **arrondi à 2 décimales**.
+- Pour chaque taux de TVA, le montant de TVA est calculé ainsi : 
+
+    `TVA (par taux) = Somme des totaux HTVA des lignes avec ce taux × Taux de TVA`
+
+- Cette méthode permet d’obtenir le montant exact de TVA à appliquer pour chaque catégorie de produit ou service.
+
+#### Calcul des totaux de la facture
+
+- Le **total HTVA de la facture** correspond à la somme des totaux HTVA de toutes les lignes.
+- Le **total TTC de la facture** est calculé en additionnant le total HTVA et la TVA totale (agrégée par taux).
+
+### Exemple : simple
+
+Supposons une facture avec deux lignes :
+
+| Produit   | Prix unitaire | Quantité | Taux TVA | Total HTVA | Total TTC |
+|-----------|---------------|----------|----------|------------|-----------|
+| Produit A | 10,1234 €     | 2        | 20%      | 20,25 €    | 24,30 €   |
+| Produit B | 5,5678 €      | 3        | 10%      | 16,70 €    | 18,37 €   |
+
+- **Total HTVA facture** = 20,25 + 16,70 = 36,95 €
+- **TVA 20%** = 20,25 × 0.20 = 4,05 €
+- **TVA 10%** = 16,70 × 0.10 = 1,67 €
+- **Total TTC facture** = 36,95 + 4,05 + 1,67 = 42,67 €
+
+Cette organisation permet de calculer correctement les totaux tout en conservant la précision sur les lignes individuelles.
+
+### Exemple : différence entre somme des lignes TTC et calcul global
+
+Supposons une facture avec **3 lignes**, chaque ligne ayant un prix et un taux de TVA différents :
+
+| Produit   | Prix unitaire | Quantité | Taux TVA | Total HTVA | Total TTC |
+|-----------|---------------|----------|----------|------------|-----------|
+| Produit A | 0,99 €        | 1        | 20%      | 0,99 €     | 1,19 €    |
+| Produit B | 1,49 €        | 1        | 10%      | 1,49 €     | 1,64 €    |
+| Produit C | 2,33 €        | 1        | 20%      | 2,33 €     | 2,80 €    |
+
+#### Somme des lignes TTC
+
+1,19 + 1,64 + 2,80 = **5,63 €**
+
+#### Calcul global par taux de TVA
+
+1. Somme HTVA par taux :
+
+    - TVA 20% : 0,99 + 2,33 = 3,32 €
+    - TVA 10% : 1,49 €
+
+2. Montant TVA par taux :
+
+    - TVA 20% : 3,32 × 0.20 = 0,664 → arrondi à 0,66 €
+    - TVA 10% : 1,49 × 0.10 = 0,149 → arrondi à 0,15 €
+
+3. Total TTC global :
+
+    - Total TTC = Somme HTVA + Somme TVA = (0,99 + 1,49 + 2,33) + (0,66 + 0,15) = 4,81 + 0,81 = **5,62 €**
+
+#### Conclusion
+
+- **Somme des lignes TTC arrondies** : 5,63 €
+- **Calcul global TTC par taux de TVA** : 5,62 €
+
+> La différence vient de l’arrondi appliqué sur chaque ligne TTC vs. l’arrondi appliqué après la somme par taux.  
+> C’est un comportement normal dans la comptabilité et c’est pour cela que la somme des lignes TTC est **à titre indicatif**.
+
 
 ## Consommations : Informations complémentaires
 
