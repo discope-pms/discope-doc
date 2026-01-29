@@ -60,6 +60,8 @@ est calculé sur base de la TVA associée au produit.
 
 -   C'est toujours le prix TVAC (arrondi) qui est affiché
 
+Remarque : La somme des prix TTC des lignes peut ne pas correspondre au montant TTC de la commande, car la TVA est calculée sur les totaux par taux et non ligne par ligne.
+
 ## Paiement des réservations en caisse
 
 La caisse permet de payer des financements. Ceci se fait via :
