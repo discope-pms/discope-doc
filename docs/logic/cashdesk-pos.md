@@ -220,3 +220,9 @@ d'arrière-plan.
 -   A4
     -   width: 210mm;
     -   padding: 10mm 69mm;
+
+
+## Facturation
+
+Plusieurs commandes d’un même client peuvent être regroupées sur une seule facture.
+Cela peut poser des problèmes lors du calcul de la TVA à payer. Pour générer une facture valide, un produit d’arrondi TVA est ajouté afin de corriger les écarts liés aux arrondis.
