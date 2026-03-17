@@ -60,6 +60,8 @@ est calculé sur base de la TVA associée au produit.
 
 -   C'est toujours le prix TVAC (arrondi) qui est affiché
 
+Remarque : La somme des prix TTC des lignes peut ne pas correspondre au montant TTC de la commande, car la TVA est calculée sur les totaux par taux et non ligne par ligne.
+
 ## Paiement des réservations en caisse
 
 La caisse permet de payer des financements. Ceci se fait via :
@@ -218,3 +220,9 @@ d'arrière-plan.
 -   A4
     -   width: 210mm;
     -   padding: 10mm 69mm;
+
+
+## Facturation
+
+Plusieurs commandes d’un même client peuvent être regroupées sur une seule facture.
+Cela peut poser des problèmes lors du calcul de la TVA à payer. Pour générer une facture valide, un produit d’arrondi TVA est ajouté afin de corriger les écarts liés aux arrondis.

@@ -321,3 +321,24 @@ les colonnes suivantes :
 -   Index final
 -   Index initial
 -   Consommation (delta)
+
+Pour les gîtes de groupes, l'onglet de relevé de compteur est affiché lorsqu'une
+réservation a le statut "terminé" (et qu'elle n'est pas annulée).
+
+La liste est groupée par type de compteur et triée par date de création.
+La différence entre l'index du check-in et celui du check-out est calculée et affichée pour chaque compteur.
+La colonne "Valeur" présente la valeur d’affichage de l'index (avec une virgule séparant les décimales).
+
+#### Coefficient
+
+Pour chaque compteur, il est possible de définir un coefficient (par défaut à 1).
+
+Ce coefficient est utilisé pour ajuster la quantité lors de la création des lignes de réservations, suite à l’encodage de checkout.
+
+Lors du relevé de compteur, le prix est retrouvé à partir du produit, de la date de création du relevé, et de la catégorie de la liste de prix définie dans le centre.
+
+Un groupe de service intitulé "Consommation des relevés" est créé, déclenchée après la validation de l'inspection pour le checkout :
+
+  - Des lignes de service sont créées pour chaque compteur repris dans les inspections. Le prix unitaire est fixé sur base de la date de checkin, et la quantité est calculée comme la différence entre l'index de checkout et celui de checkin, multipliée par le coefficient défini pour le compteur.
+  - Pour chaque ligne, le prix correspond au produit de la quantité et du prix unitaire, et le nom du compteur est renseigné dans la description.
+  - Le prix de la réservation est mis à jour et les relevés sont marquées comme facturées.

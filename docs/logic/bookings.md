@@ -500,6 +500,106 @@ le premier jour et 0 pour le second.
     désactivée (et passe nécessairement par la modification du nombre de
     personnes par tranche d'âge).
 
+## Calcul du prix
+
+Le calcul du prix d’une réservation ou d’une facture doit suivre des règles précises afin d’assurer l’exactitude des montants pour le client et la comptabilité.
+Chaque produit ou service est facturé selon son prix unitaire, sa quantité et le taux de TVA applicable.
+Les montants HTVA et TTC sont calculés avec des règles d’arrondi spécifiques pour éviter les écarts.
+Cette section décrit la structure des lignes de réservation/facture, le calcul des totaux, et la méthode pour appliquer correctement la TVA par taux.
+
+### Structure
+
+Une réservation ou facture est composée de plusieurs **lignes**, chaque ligne représentant un produit ou un service.  
+Chaque ligne contient les informations suivantes :
+
+- **Produit** : nom ou référence du produit/service.
+- **Prix unitaire** : prix HTVA d'une unité.
+- **Quantité** : nombre d’unités commandées.
+- **Taux de TVA** : pourcentage de TVA applicable à la ligne.
+- **Total HTVA** : prix total hors taxes pour la ligne.
+- **Total TTC** : prix total toutes taxes comprises (à titre indicatif).
+
+### Calculs
+
+#### Calcul du prix HTVA d’une ligne
+
+- Le **prix unitaire** d’un produit peut contenir jusqu’à **4 décimales**.
+- Le **total HTVA** d’une ligne est calculé ainsi :
+
+    `Total HTVA = Prix unitaire × Quantité`
+
+- Le total HTVA est ensuite **arrondi à 2 décimales**.
+- Le **total TTC** d’une ligne est calculé à partir du total HTVA et du taux de TVA, mais est fourni **uniquement à titre indicatif**.
+
+#### Calcul de la TVA
+
+- La TVA est calculée **par taux de TVA**, pour garantir une ventilation correcte des montants par taux.
+- Le total TVA d'un taux est **arrondi à 2 décimales**.
+- Pour chaque taux de TVA, le montant de TVA est calculé ainsi : 
+
+    `TVA (par taux) = Somme des totaux HTVA des lignes avec ce taux × Taux de TVA`
+
+- Cette méthode permet d’obtenir le montant exact de TVA à appliquer pour chaque catégorie de produit ou service.
+
+#### Calcul des totaux de la facture
+
+- Le **total HTVA de la facture** correspond à la somme des totaux HTVA de toutes les lignes.
+- Le **total TTC de la facture** est calculé en additionnant le total HTVA et la TVA totale (agrégée par taux).
+
+### Exemple : simple
+
+Supposons une facture avec deux lignes :
+
+| Produit   | Prix unitaire | Quantité | Taux TVA | Total HTVA | Total TTC |
+|-----------|---------------|----------|----------|------------|-----------|
+| Produit A | 10,1234 €     | 2        | 20%      | 20,25 €    | 24,30 €   |
+| Produit B | 5,5678 €      | 3        | 10%      | 16,70 €    | 18,37 €   |
+
+- **Total HTVA facture** = 20,25 + 16,70 = 36,95 €
+- **TVA 20%** = 20,25 × 0.20 = 4,05 €
+- **TVA 10%** = 16,70 × 0.10 = 1,67 €
+- **Total TTC facture** = 36,95 + 4,05 + 1,67 = 42,67 €
+
+Cette organisation permet de calculer correctement les totaux tout en conservant la précision sur les lignes individuelles.
+
+### Exemple : différence entre somme des lignes TTC et calcul global
+
+Supposons une facture avec **3 lignes**, chaque ligne ayant un prix et un taux de TVA différents :
+
+| Produit   | Prix unitaire | Quantité | Taux TVA | Total HTVA | Total TTC |
+|-----------|---------------|----------|----------|------------|-----------|
+| Produit A | 0,99 €        | 1        | 20%      | 0,99 €     | 1,19 €    |
+| Produit B | 1,49 €        | 1        | 10%      | 1,49 €     | 1,64 €    |
+| Produit C | 2,33 €        | 1        | 20%      | 2,33 €     | 2,80 €    |
+
+#### Somme des lignes TTC
+
+1,19 + 1,64 + 2,80 = **5,63 €**
+
+#### Calcul global par taux de TVA
+
+1. Somme HTVA par taux :
+
+    - TVA 20% : 0,99 + 2,33 = 3,32 €
+    - TVA 10% : 1,49 €
+
+2. Montant TVA par taux :
+
+    - TVA 20% : 3,32 × 0.20 = 0,664 → arrondi à 0,66 €
+    - TVA 10% : 1,49 × 0.10 = 0,149 → arrondi à 0,15 €
+
+3. Total TTC global :
+
+    - Total TTC = Somme HTVA + Somme TVA = (0,99 + 1,49 + 2,33) + (0,66 + 0,15) = 4,81 + 0,81 = **5,62 €**
+
+#### Conclusion
+
+- **Somme des lignes TTC arrondies** : 5,63 €
+- **Calcul global TTC par taux de TVA** : 5,62 €
+
+> La différence vient de l’arrondi appliqué sur chaque ligne TTC vs. l’arrondi appliqué après la somme par taux.  
+> C’est un comportement normal dans la comptabilité et c’est pour cela que la somme des lignes TTC est **à titre indicatif**.
+
 
 ## Consommations : Informations complémentaires
 
@@ -1040,6 +1140,14 @@ annexe :
 Les différents états par lesquels passe une réservation sont décrit dans
 le chapitre « Etats d'une réservation ».
 
+### Schéma
+
+<center><img src="/_assets/img/booking-workflow.png" /></center>
+
+### Schéma détaillé
+
+<center><img src="/_assets/img/booking-workflow-detailed.png" /></center>
+
 ### Etats d'une réservation
 
 Les réservations doivent nécessairement passer par chacun de ces états
@@ -1051,9 +1159,11 @@ selon les transitions présentées dans le diagramme ci-dessus :
 -   Validée
 -   Checked-in
 -   Checked-out
+-   Pro forma
 -   Solde débiteur
 -   Solde créditeur
 -   Clôture
+-   Annulée
 
 Lorsqu'une réservation passe en 'option', les consommations sont créées
 et il n'est plus possible de modifier le détail des services.
@@ -1174,6 +1284,72 @@ Important : La vue `[Planning > Arrivées > Prévues]` est également
 consacrée à l'export du listing des arrivées (précédemment
 `[Réservations > Planning > Arrivées]`).
 
+### Annulation
+
+#### Annulation sans frais
+
+Annulation d'une réservation sans facturation.
+
+Conséquences :
+
+  - La réservation est marquée comme annulée et son status passe à "Annulée".
+  - Les financements non payés sont supprimés.
+  - Les montants des financements restants sont ajustés au montant déjà payé.
+  - Un financement négatif est créé pour le remboursement du client.
+
+#### Annulation avec frais
+
+Annulation d'une réservation avec facturation de frais d'annulation.
+
+Conséquences :
+
+  - La réservation est marquée comme annulée.
+  - Si la réservation est encore au stade Devis, elle le reste. Si elle a déjà dépassé le stade Devis, son statut passe à "Terminée".
+  - Les financements non payés sont supprimés.
+  - Les groupes sont requalifiés en "Extra" afin de pouvoir être modifiés.
+  - Un groupe supplémentaire est ajouté, contenant le produit d’annulation au tarif saisi dans les "Frais d’annulation".
+
+Ensuite :
+
+  - Les groupes "Extra" devenus inutiles peuvent être supprimés.
+  - Les frais d’annulation sont facturés.
+  - La réservation suit ensuite le processus habituel jusqu’au statut "Clôturée".
+
+#### Annulation avec frais OTA
+
+Annulation d'une réservation avec frais depuis une plateforme externe à Discope.
+
+Conséquences :
+
+  - Le statut de la réservation passe à "Terminée".
+  - Les financements non payés sont supprimés.
+  - Les groupes sont requalifiés en "Extra" afin de pouvoir être modifiés.
+  - Un groupe supplémentaire est ajouté, contenant le produit d’annulation au tarif de 0 €.
+
+Ensuite :
+
+  - Les groupes "Extra" devenus inutiles peuvent être supprimés.
+  - Le montant des frais d’annulation doit être modifié de 0 € vers la somme demandée.
+  - Les frais d’annulation sont facturés.
+  - La réservation suit ensuite le processus habituel jusqu’au statut "Clôturée".
+
+#### Annulation sans frais OTA
+
+Annulation d'une réservation sans frais depuis une plateforme externe à Discope.
+
+Conséquences :
+
+  - La réservation est marquée comme annulée et son status passe à "Annulée".
+  - Les financements non payés sont supprimés.
+  - Les groupes sont requalifiés en "Extra" afin de pouvoir être modifiés.
+  - Un groupe supplémentaire est ajouté, contenant le produit d’annulation au tarif de 0 €.
+
+Ensuite :
+
+  - Utiliser l'action "Annuler sans frais" dans la fiche de réservation :
+    - Le statut de la réservation passe à "Annulée".
+    - Les montants des financements restants sont ajustés au montant déjà payé.
+    - Un financement négatif est créé pour le remboursement du client.
 
 ## Système d'alertes
 
@@ -1232,3 +1408,32 @@ le centre de gestion.
 Lors des passages de statut ou lorsqu'une réservation est annulée ou
 clôturée, certaines alertes deviennent non pertinentes et sont
 automatiquement supprimées.
+
+
+
+## Type
+
+Il est possible de définir différents **types de réservation** afin d’améliorer l’analyse statistique des réservations effectuées.
+
+> 💡 **Astuce** : Le type de réservation peut également être utilisé pour appliquer un plan de paiement spécifique.
+
+Une réservation peut se voir attribuer un type de plusieurs manières :
+
+- à partir du **type de réservation associé au modèle de produit** d’un pack vendu ;
+- via la **correspondance avec une règle d’assignation** de type de réservation.
+
+### 1) Type défini par le modèle de produit d’un pack
+
+Si le modèle de produit d’un pack vendu dans la réservation possède un type de réservation configuré, ce type sera automatiquement attribué à la réservation.
+
+### 2) Type défini par une règle d’assignation
+
+Des **règles d’assignation** peuvent être paramétrées pour déterminer le type de réservation en fonction de différents critères :
+
+- **Conditions** : nombre de personnes, nombre d’enfants, nombre d’adultes, channel manager, durée ou caractéristiques du séjour
+- **Type de séjour** : gîte auberge ou gîte groupe
+- **Catégories tarifaires** : T1, T2, T3, T4, etc.
+
+Il est également possible de créer une **règle d’assignation par défaut**, sans conditions, sans type de séjour et sans catégorie tarifaire, afin d’attribuer un type de réservation lorsque aucun autre critère ne s’applique.
+
+Ce mécanisme offre une grande **flexibilité** dans l’attribution automatique des types de réservation.
