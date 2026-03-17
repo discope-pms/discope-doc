@@ -27,38 +27,23 @@ suivants :
 
 -   Correspondent au centre (si précisé)
 
-Les données sont basées sur les services réservés, regroupés par séjour
-et sur base des unités locatives (de type logement) attribuées.
+Les données sont basées sur les services réservés, regroupés par séjour et sur base des unités locatives (de type logement) attribuées.
 
 Les nombres de personnes renseignés correspondent au nombre théorique de
 personnes qui ont séjourné, indépendamment des éventuelles gratuités.
 
 Il y a cependant certaines limitations :
 
-1.  Les consommations peuvent être présentes pour les réservations en
-    option ou en devis et ne peuvent donc pas être utilisées. Par
-    ailleurs, les consommations ne permettent pas de faire de
-    répartition par tranche d'âge
+1.  Les consommations peuvent être présentes pour les réservations en option ou en devis et ne peuvent donc pas être utilisées. Par ailleurs, les consommations ne permettent pas de faire de répartition par tranche d'âge
+    
+2.  Le mode d'assignation des unités locatives sur base de la comptabilisation du produit et du nombre de personnes du groupe, induit une imprécision au niveau du nombre de nuitées (par exemple si, pour un séjour de 2 nuits, un logement pour 4 personnes est choisi pour un total de 6 participants, il y aura 2 logements de capacité de 4 assignés à la réservation, soit un total de 16 nuitées au lieu de 12).
+    
+3.  Les calculs sont basés sur la correspondance entre la quantité et le nombre de nuitées (ou de jours) et les éventuelles variations d'un
+    jour à l'autre, en modifiant la quantité, peuvent aboutir à un résultat légèrement différent de la réalité
 
-2.  Le mode d'assignation des unités locatives sur base de la
-    comptabilisation du produit et du nombre de personnes du groupe,
-    induit une imprécision au niveau du nombre de nuitées (par exemple
-    si, pour un séjour de 2 nuits, un logement pour 4 personnes est
-    choisi pour un total de 6 participants, il y aura 2 logements de
-    capacité de 4 assignés à la réservation, soit un total de 16 nuitées
-    au lieu de 12).
-
-3.  Les calculs sont basés sur la correspondance entre la quantité et le
-    nombre de nuitées (ou de jours) et les éventuelles variations d'un
-    jour à l'autre, en modifiant la quantité, peuvent aboutir à un
-    résultat légèrement différent de la réalité
-
-Pour les statistiques liées au chiffre d'affaires, ce sont les factures
-et lignes de facture qui sont utilisées. Il peut donc y avoir des
-différences dans les valeurs renseignées selon le type de statistique
-(puisque les réservations, même terminées, ne sont généralement pas
-facturées immédiatement ; et que les réservations dans le futur n'ont
-nécessairement pas encore de facture).
+Pour les statistiques liées au chiffre d'affaires, ce sont les factures et lignes de facture qui sont utilisées. Il peut donc y avoir des
+différences dans les valeurs renseignées selon le type de statistique (puisque les réservations, même terminées, ne sont généralement pas
+facturées immédiatement ; et que les réservations dans le futur n'ont nécessairement pas encore de facture).
 
 ## Liste des STATS
 
@@ -95,33 +80,46 @@ travailler à partir de ce fichier.
 
 #### Chiffre d'affaires
 
-La demande des Chiffre `des affaires` a porté sur des
-statistiques prévisionnelles avec les informations comptabilisées sur le
-mois de durant lequel se déroule le séjour de la réservation (sur bas de
-la date de fin, c'est-à-dire le mois au cours duquel se termine une
-réservation).
+Les stats Chiffre d'affaires portent sur des
+statistiques prévisionnelles avec les informations comptabilisées sur le mois de durant lequel se déroule le séjour de la réservation (sur bas de la date de fin, c'est-à-dire le mois au cours duquel se termine une réservation).
+
+Les montants affichés dans les différentes variantes de chiffre d’affaires sont basés sur les **lignes de factures** (et non directement sur les réservations).
+
+Les valeurs correspondent aux **montants effectivement facturés**, tenant compte :
+
+- des règles tarifaires appliquées (saisons, catégories tarifaires, etc.)
+- des remises éventuelles
+- des ajustements liés aux produits
+
+Il s’agit donc de montants **nets facturés**, et non de montants théoriques.
+
+⚠️ **Attention :** ces données peuvent différer des montants comptables (ex : BOB), car :
+
+- les statistiques reposent sur la structuration fonctionnelle des produits (catégories statistiques)
+- la comptabilité repose sur les comptes comptables et les écritures validées
+- 
 
 Dans le menu `App Stats > (menu gauche) > Stats Réservations >
-Chiffre d'affaire`, on retrouve toutes les options concernant
-les chiffres d'affaires facturés, non facturés, théoriques et
-prévisionnels.
+Chiffre d'affaire`, on retrouve toutes les options concernant les chiffres d'affaires facturés, non facturés, théoriques et prévisionnels.
 
-Pour chacune de ces options, il existe une recherche avancée où
-l'utilisateur doit sélectionner la date de début et la date de fin. Il
-est également possible de choisir un centre spécifique ou tous les
-centres.
+Pour chacune de ces options, il existe une recherche avancée où l'utilisateur doit sélectionner la date de début et la date de fin. Il est également possible de choisir un centre spécifique ou tous les centres.
 
-L'option "tous les centres" prendra en compte tous les centres
-auxquels l'utilisateur a accès.
+L'option "tous les centres" prendra en compte tous les centres auxquels l'utilisateur a accès.
 
-Pour le Chiffre d'affaires prévisionnel, il est possible d'exclure les
-réservations en option en cliquant sur l'option "Options exclues"
-dans la recherche avancée.
+Pour le Chiffre d'affaires prévisionnel, il est possible d'exclure les réservations en option en cliquant sur l'option "Options exclues" dans la recherche avancée.
 
-Ensuite, il y a une liste avec les résultats basée sur les paramètres
-définis dans la recherche. Dans la liste, on trouve le nombre de
-centres, le mois et l'année, les totaux concernant les unités,
-animations, repas, et un total général.
+Ensuite, il y a une liste avec les résultats basée sur les paramètres définis dans la recherche. Dans la liste, on trouve le nombre de
+centres, le mois et l'année, les totaux concernant les unités, animations, repas, et un total général.
+
+
+Les différentes colonnes (unités, animations, repas, etc.) sont déterminées sur base de la **catégorie statistique des produits** présents dans les lignes de facture.
+
+En particulier :
+
+- La colonne **« Nuitées »** regroupe les montants liés aux produits dont la catégorie statistique est de type **`SEJ` ou `GITE`**
+- Ce regroupement est **indépendant des comptes comptables**
+
+
 
 À la fin de la liste, il y a également un total par type.
 
@@ -143,7 +141,48 @@ animations, repas, et un total général.
     de gestion, puis par produit, et sont établies à partir des lignes
     de factures. Chaque ligne reprend le nom du produit, la quantité
     totale facturée et le montant total facturé. Le grand total est
-    également renseigné au bas du tableau.
+    également renseigné au bas du tableau. 
+    
+    Les regroupements sont effectués sur base des **produits présents dans les lignes de facture**.
+    
+    ⚠️ Il n’y a pas de correspondance directe avec les comptes comptables : plusieurs produits peuvent être liés à un même compte comptable, et inversement.
+    
+    Pour une analyse comptable, il est recommandé de croiser ces données avec les comptes associés aux produits.
+
+
+⚠️ Contenu de la colonne « Nuitées »
+
+La colonne « Nuitées » ne correspond pas strictement aux seules nuitées d’hébergement.
+
+Elle inclut tous les produits :
+
+* appartenant à une catégorie statistique SEJ ou GITE
+* présents dans les lignes de facture
+
+Cela peut inclure des produits de type nuitées, mais aussi :
+
+* des frais fixes
+* des packs
+* des remises
+
+ou d’autres services associés
+
+👉 Exemple (centres GG) :
+* Nuitée Cornimont (Entier)
+* Frais fixe Cornimont (Entier)
+* Nuitée Bastogne entier
+* Frais fixe Bastogne entier
+
+etc.
+
+❗ Conséquence
+
+Le total de la colonne « Nuitées » peut :
+* être supérieur au chiffre attendu pour les seules nuitées
+* inclure des éléments non directement liés à l’hébergement
+
+Cela dépend entièrement de la configuration des produits et de leur catégorie statistique.
+
 
 #### Contrats & Réservations
 
