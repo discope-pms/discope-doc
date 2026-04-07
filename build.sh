@@ -52,6 +52,7 @@ while [ "$i" -lt "$COUNT" ]; do
     cp -r "$SRC_PATH/." "$DEST_PATH/"
   else
     echo "️Error - Missing path: $SRC_PATH"
+	i=$((i + 1))
     continue
   fi
 
