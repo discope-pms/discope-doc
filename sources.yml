@@ -16,3 +16,9 @@ sources:
     branch: main
     path: lathus/doc
     target: lathus
+
+  - name: Relais-Valrance
+    repo: https://github.com/discope-pms/discope.git
+    branch: main
+    path: valrance/doc
+    target: valrance
