@@ -1,0 +1,18 @@
+sources:
+  - name: Discope
+    repo: https://github.com/discope-pms/discope.git
+    branch: main
+    path: doc
+    target: .
+
+  - name: Kaleo
+    repo: https://github.com/discope-pms/discope.git
+    branch: main
+    path: kaleo/doc
+    target: kaleo
+
+  - name: CPA-Lathus
+    repo: https://github.com/discope-pms/discope.git
+    branch: main
+    path: lathus/doc
+    target: lathus

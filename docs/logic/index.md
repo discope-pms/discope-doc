@@ -1,1 +1,0 @@
-Cette section décrit les objets et concepts intervenant dans les différents flux ainsi que la manière avec laquelle ils sont manipulés.

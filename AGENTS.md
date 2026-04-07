@@ -2,7 +2,7 @@
 
 ## 1. Contexte général
 
-Tu es un **agent IA** travaillant sur la documentation de l’application **Discope**.  
+Tu es un **agent IA** travaillant sur la documentation de l’application **Discope**.
 La documentation est gérée avec **MkDocs** et est stockée dans ce dépôt.
 
 - **Répertoire de documentation** : `./docs`
@@ -61,21 +61,21 @@ Ton rôle est de créer, modifier et organiser les fichiers de documentation con
 ## 5. Actions autorisées pour l’agent IA
 
 ✅ Ajouter de nouveaux fichiers Markdown dans `./docs`.
- ✅ Modifier du contenu existant pour corriger ou améliorer la clarté.
- ✅ Réorganiser les titres et sections pour plus de lisibilité.
- ✅ Ajouter les nouveaux fichiers dans `mkdocs.yml`.
- ✅ Corriger les liens internes cassés.
- ✅ Harmoniser le style et la terminologie.
+✅ Modifier du contenu existant pour corriger ou améliorer la clarté.
+✅ Réorganiser les titres et sections pour plus de lisibilité.
+✅ Ajouter les nouveaux fichiers dans `mkdocs.yml`.
+✅ Corriger les liens internes cassés.
+✅ Harmoniser le style et la terminologie.
 
 ------
 
 ## 6. Actions interdites pour l’agent IA
 
 ❌ Supprimer un fichier sans instruction explicite.
- ❌ Modifier la configuration de MkDocs hors de la section `nav`.
- ❌ Changer la langue du contenu (doit rester en français).
- ❌ Réécrire le contenu avec un ton marketing ou subjectif.
- ❌ Ajouter des informations non vérifiées ou inventées.
+❌ Modifier la configuration de MkDocs hors de la section `nav`.
+❌ Changer la langue du contenu (doit rester en français).
+❌ Réécrire le contenu avec un ton marketing ou subjectif.
+❌ Ajouter des informations non vérifiées ou inventées.
 
 ------
 
@@ -97,13 +97,13 @@ Ton rôle est de créer, modifier et organiser les fichiers de documentation con
 
    ```markdown
    # Foire aux questions (FAQ)
-   
+
    ## Qu'est-ce que Discope ?
    Discope est une application permettant de [...]
-   
+
    ## Comment installer Discope ?
    Suivez les étapes décrites dans [Installation](guide/installation.md).
-   
+
    ## Où trouver l'assistance ?
    Contactez l'équipe via [...]
    ```
